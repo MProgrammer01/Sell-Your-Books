@@ -1,6 +1,8 @@
-# 📚 Sell Your Books
+<div align="center">
+  <h1>📚 Sell Your Books</h1>
+</div>
 
-**Sell Your Books** هو تطبيق Full-Stack لإدارة وبيع الكتب، يتيح للبائعين إنشاء وإدارة الكتب الخاصة بهم، مع نظام مصادقة وتفويض آمن، وإدارة الحسابات والبائعين والكتب.
+هو تطبيق Full-Stack لإدارة وبيع الكتب، يتيح للبائعين إنشاء وإدارة الكتب الخاصة بهم، مع نظام مصادقة وتفويض آمن، وإدارة الحسابات والبائعين والكتب.
 
 تم تطوير المشروع باستخدام **Flutter وDart** في الواجهة الأمامية، و**ASP.NET Core Web API وC#** في الواجهة الخلفية، مع **SQL Server** كقاعدة بيانات.
 
@@ -104,13 +106,13 @@
                       ▼
 ┌──────────────────────────────────────────┐
 │             Business Layer               │
-│          Business Logic / DTOs           │
+│             Business Logic               │
 └─────────────────────┬────────────────────┘
                       │
                       ▼
 ┌──────────────────────────────────────────┐
 │               Data Layer                 │
-│       SQL Server / EF Core / SPs         │
+│    SQL Server / DTOs / EF Core / SPs     │
 └──────────────────────────────────────────┘
 ```
 
@@ -132,7 +134,6 @@
 مسؤولة عن:
 
 * Business Logic
-* DTOs
 * Validation
 * Authentication Logic
 * Authorization Logic
@@ -145,6 +146,7 @@
 
 * الاتصال بقاعدة البيانات
 * Entity Framework Core
+* DTOs
 * Stored Procedures
 * Database Transactions
 * CRUD Operations
@@ -178,7 +180,7 @@ Feature
     └── Widgets
 ```
 
-Flutter مسؤول عن:
+مسؤول عن:
 
 * واجهة المستخدم
 * Navigation
@@ -339,9 +341,9 @@ Authenticated User
 هل الكتاب تابع لهذا البائع؟
         │
     ┌───┴───┐
-   نعم      لا
-    │        │
-    ▼        ▼
+     نعم       لا
+    │       │
+    ▼       ▼
   السماح    الرفض
 ```
 
@@ -459,7 +461,7 @@ BEGIN TRANSACTION
       نجاح            خطأ
         │               │
         ▼               ▼
-      COMMIT          ROLLBACK
+     ROLLBACK         COMMIT
 ```
 
 إذا فشلت إحدى العمليات، يتم تنفيذ `ROLLBACK` لمنع بقاء بيانات ناقصة أو غير متناسقة.
@@ -615,149 +617,13 @@ ServerError
 
 ---
 
-# ⚙️ طريقة تشغيل المشروع
 
-## المتطلبات
-
-قبل تشغيل المشروع، تأكد من توفر:
-
-* Flutter SDK
-* Dart SDK
-* .NET SDK
-* SQL Server
-* SQL Server Management Studio
-* Visual Studio أو Android Studio
-* Git
-
----
-
-# 🗃️ إعداد الـBackend
-
-### 1. تحميل المشروع
-
-```bash
-git clone https://github.com/YOUR_USERNAME/SellYourBooks.git
-```
-
-ثم:
-
-```bash
-cd SellYourBooks
-```
-
-### 2. إعداد SQL Server
-
-قم بإنشاء قاعدة البيانات المطلوبة وتنفيذ:
-
-* Tables
-* Relationships
-* Stored Procedures
-* Seed Data
-
-ثم قم بإعداد Connection String الخاص بقاعدة البيانات.
-
-مثال:
-
-```json
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "YOUR_SQL_SERVER_CONNECTION_STRING"
-  }
-}
-```
-
-### 3. إعداد JWT
-
-قم بإعداد إعدادات JWT الخاصة ببيئة التشغيل.
-
-مثال:
-
-```json
-{
-  "Jwt": {
-    "Key": "YOUR_SECRET_KEY",
-    "Issuer": "YOUR_ISSUER",
-    "Audience": "YOUR_AUDIENCE"
-  }
-}
-```
-
-> ⚠️ لا تقم برفع كلمات المرور أو Connection Strings أو JWT Secrets الحقيقية إلى GitHub.
-
-### 4. تشغيل الـAPI
-
-```bash
-dotnet restore
-dotnet build
-dotnet run
-```
-
----
-
-# 📱 إعداد Flutter
-
-انتقل إلى مشروع Flutter:
-
-```bash
-cd sell_your_books
-```
-
-قم بتثبيت Dependencies:
-
-```bash
-flutter pub get
-```
-
-ثم شغل التطبيق:
-
-```bash
-flutter run
-```
-
-لتشغيله على Chrome:
-
-```bash
-flutter run -d chrome
-```
+# ❗اشارة
 
 تأكد من أن **API Base URL** في Flutter يشير إلى عنوان ASP.NET Core API الذي يعمل عندك.
 
 ---
 
-# 🔐 حماية المعلومات الحساسة
-
-لا تقم برفع المعلومات الحساسة إلى GitHub، مثل:
-
-```text
-JWT Secrets
-Database Passwords
-Private Keys
-Production Connection Strings
-API Credentials
-Refresh Token Secrets
-```
-
-يفضل استخدام Environment Variables أو Configuration مخصصة لكل Environment.
-
----
-
-# 🧪 الاختبار
-
-يمكن اختبار المشروع من خلال:
-
-* Flutter Application
-* REST API
-* Authentication
-* Authorization
-* Ownership Validation
-* CRUD Operations
-* Database Operations
-* Rate Limiting
-* Error Handling
-
-ويمكن استخدام **Postman** لاختبار الـAPI Endpoints.
-
----
 
 # 📂 هيكلة المشروع
 
@@ -774,11 +640,11 @@ SellYourBooks/
 │   │   └── Program.cs
 │   │
 │   ├── SimpleSellBooks_BusinessLayer/
-│   │   ├── DTOs/
 │   │   ├── Business/
 │   │   └── Services/
 │   │
 │   └── SimpleSellBooks_DataLayer/
+        ├── DTOs/
 │       ├── Entities/
 │       ├── DbContext/
 │       └── Data Access/
@@ -786,14 +652,12 @@ SellYourBooks/
 ├── Database/
 │   ├── Tables/
 │   ├── Stored Procedures/
-│   └── Seed Data/
 │
 └── Flutter/
     └── sell_your_books/
         ├── lib/
         │   ├── Features/
         │   ├── Core/
-        │   ├── Models/
         │   └── main.dart
         │
         └── pubspec.yaml
@@ -832,23 +696,7 @@ SellYourBooks/
 
 # 🔮 التطويرات المستقبلية
 
-من الأفكار المستقبلية لتطوير المشروع:
-
-* Shopping Cart
-* نظام الطلبات
-* عملية شراء الكتب
-* Payment Integration
-* Reviews & Ratings
-* Wishlist
-* البحث المتقدم
-* Filtering
-* Notifications
-* Admin Dashboard
-* Analytics
-* Automated Testing
-* CI/CD Pipeline
-* Production Deployment
-
+سوف يتم تحسين و اضافة اشياء جديدة في المستقبل.
 ---
 
 # 📈 حالة المشروع
@@ -875,17 +723,7 @@ SellYourBooks/
 
 # 👨‍💻 المطور
 
-**Mouad El Kharrar**
-
-Full-Stack Developer مهتم بتطوير التطبيقات والـAPIs باستخدام:
-
-* ASP.NET Core
-* C#
-* SQL Server
-* Flutter
-* Dart
-* RESTful APIs
-* Secure Backend Development
+**Mouad El Kharraz**
 
 ---
 
@@ -893,8 +731,14 @@ Full-Stack Developer مهتم بتطوير التطبيقات والـAPIs با�
 
 تم تطوير هذا المشروع لأغراض تعليمية، تطبيقية، وضمن معرض الأعمال الشخصي.
 
-يمكن إضافة License مناسبة للمشروع لاحقاً حسب طريقة نشر واستخدام الكود.
+<div align="center">
+  <p>هذا المشروع مفتوح المصدر ومتوفر تحت رخصة <strong>Apache License 2.0</strong>.</p>
+</div>
 
 ---
 
 ⭐ إذا أعجبك المشروع، يمكنك استكشاف الكود ومتابعة مراحل تطوير **Sell Your Books**.
+
+<div align="center">
+  <p>صُنع بـ MProgrammer01 للتعلم والتطوير</p>
+</div>
