@@ -10,6 +10,15 @@
 
 ---
 
+# 🔗 روابط المشاريع
+
+يمكنك الاطلاع على الـFrontend Repository من هنا:
+
+👉 **[Sell Your Books — Frontend](https://github.com/MProgrammer01/Simple-Sell-Books-frontend.git)**
+
+يمكنك الاطلاع على الـBackend Repository من هنا:
+
+👉 **[Sell Your Books — Backend](https://github.com/MProgrammer01/Simple-Sell-Books-backend.git)**
 ## 🚀 المميزات الرئيسية
 
 ### 🔐 المصادقة والتفويض
